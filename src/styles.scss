@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+  background-color: #004466;
+  padding-top: 1em;
+}
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}
+.mg-top-50 {
+  margin-top: 30px;
+}
