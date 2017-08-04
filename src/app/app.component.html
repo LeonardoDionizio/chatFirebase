@@ -3,7 +3,7 @@
     <div class="row">
       <div class="chat-container" *ngFor="let item of items | async">
         <a href="#">{{item.name}}</a>
-        <p>{{item.message}}</p>
+        <p>{{msg.message}}</p>
       </div>
 
     </div>
@@ -11,6 +11,11 @@
       <button class="btn btn-primary" (click)="login()" *ngIf="!name">Entrar com Facebook</button>
       <input type="text" id="message" *ngIf="name" placeholder="Digite sua mensagem" (keyup.enter)="chatSend($event.target.value)"
         [(ngModel)]="msgVal" />
+    </div>
+    <div class="row" *ngIf="!name">
+      <div class="col">
+        <button class="btn btn-primary" (click)="logout()">Desconectar</button>
+      </div>
     </div>
   </div>
 </div>

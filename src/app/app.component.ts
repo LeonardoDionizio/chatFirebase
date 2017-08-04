@@ -13,13 +13,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items: FirebaseListObservable<any>;
+  msg: FirebaseListObservable<any>;
   provider = new firebase.auth.FacebookAuthProvider();
   name: any;
   msgVal = '';
 
   constructor(public af: AngularFireDatabase, private afAuth: AngularFireAuth) {
-    this.items = af.list('/messages', {
+    this.msg = af.list('/messages', {
       query: {
         limitToLast: 5
       }
@@ -36,48 +36,17 @@ export class AppComponent {
       .auth()
       .signInWithPopup(this.provider)
       .then(function(result) {
-        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
         const token = result.credential.accessToken;
-        // The signed-in user info.
         const user = result.user;
-        // ...
       })
       .catch(function(error) {
-        // Handle Errors here.
         const errorCode = error.name;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        // const email = error.email;
-        // // The firebase.auth.AuthCredential type that was used.
-        // const credential = .credential;
-        // ...
       });
-
-    // firebase
-    //   .auth()
-    //   .signInWithRedirect(new firebase.auth.FacebookAuthProvider())
-    //   .then(function(result) {
-    //     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-    //     const token = result.credential.accessToken;
-    //     // The signed-in user info.
-    //     const user = result.user;
-    //     // ...
-    //   })
-    //   .catch(function(error) {
-    //     // Handle Errors here.
-    //     // const errorCode = error.code;
-    //     console.log('erro');
-    //     const errorMessage = error.message;
-    //     // The email of the user's account used.
-    //     // const email = error.email;
-    //     // The firebase.auth.AuthCredential type that was used.
-    //     // const credential = error.credential;
-    //     // ...
-    //   });
   }
 
   chatSend(theirMessage: string) {
-    this.items.push({
+    this.msg.push({
       message: theirMessage,
       name: this.name.displayName
     });
@@ -87,11 +56,9 @@ export class AppComponent {
   logout() {
     firebase.auth().signOut().then(
       function() {
-        // Sign-out successful.
+        alert('Você saiu do chat, mas volte blz?');
       },
-      function(error) {
-        // An error happened.
-      }
+      function(error) {}
     );
   }
 }

@@ -9,6 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+// Configurações de conexão do firebase
 export const firebaseConfig = {
   apiKey: 'AIzaSyBSPDqsWRkuGEK7Q7_fiMA7ZOSj8om2x3M',
   authDomain: 'chatapp-c8f50.firebaseapp.com',
