@@ -13,13 +13,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  msg: FirebaseListObservable<any>;
+  items: FirebaseListObservable<any>;
   provider = new firebase.auth.FacebookAuthProvider();
   name: any;
   msgVal = '';
 
   constructor(public af: AngularFireDatabase, private afAuth: AngularFireAuth) {
-    this.msg = af.list('/messages', {
+    this.items = af.list('/messages', {
       query: {
         limitToLast: 5
       }
@@ -46,7 +46,7 @@ export class AppComponent {
   }
 
   chatSend(theirMessage: string) {
-    this.msg.push({
+    this.items.push({
       message: theirMessage,
       name: this.name.displayName
     });
@@ -54,6 +54,7 @@ export class AppComponent {
   }
 
   logout() {
+    this.name = undefined;
     firebase.auth().signOut().then(
       function() {
         alert('Você saiu do chat, mas volte blz?');
