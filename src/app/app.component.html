@@ -1,20 +1,27 @@
 <div class="container">
   <div class="jumbotron">
-    <div class="row">
+    <div class="row d-flex justify-content-center">
+      <h1>Chat Play</h1>
+    </div>
+    <div class="row" *ngIf="name">
       <div class="chat-container" *ngFor="let item of items | async">
         <a href="#">{{item.name}}</a>
         <p>{{item.message}}</p>
       </div>
+    </div>
+    <br>
+    <div class="row mg-top-50" *ngIf="name">
+      <div class="col input-group">
+        <input type="text" class="form-control" id="message" placeholder="Digite sua mensagem" (keyup.enter)="chatSend($event.target.value)"
+          [(ngModel)]="msgVal" maxlength="30">
+        <span class="btn-send input-group-addon" (click)="chatSend(msgVal)"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+      </div>
+    </div>
 
-    </div>
     <div class="row mg-top-50">
-      <button class="btn btn-primary" (click)="login()" *ngIf="!name">Entrar com Facebook</button>
-      <input type="text" id="message" *ngIf="name" placeholder="Digite sua mensagem" (keyup.enter)="chatSend($event.target.value)"
-        [(ngModel)]="msgVal" />
-    </div>
-    <div class="row" *ngIf="name">
-      <div class="col">
-        <button class="btn btn-primary" (click)="logout()">Desconectar</button>
+      <div class="col  d-flex justify-content-center ">
+        <button class="btn btn-cp" (click)="login()" *ngIf="!name">Entrar com Facebook</button>
+        <button class="btn btn-cp" (click)="logout()" *ngIf="name">Desconectar</button>
       </div>
     </div>
   </div>
