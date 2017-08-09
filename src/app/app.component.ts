@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
-import {
-  AngularFireDatabase,
-  FirebaseListObservable
-} from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase/app';
 import { AngularFireAuth } from 'angularfire2/auth';
 
@@ -31,6 +28,7 @@ export class AppComponent {
     });
   }
 
+  // fazer login (ainda apenas com facebook)
   login() {
     firebase
       .auth()
@@ -45,6 +43,7 @@ export class AppComponent {
       });
   }
 
+  // enviar as mensagens
   chatSend(theirMessage: string) {
     this.items.push({
       message: theirMessage,
@@ -53,6 +52,7 @@ export class AppComponent {
     this.msgVal = '';
   }
 
+  // deslogar
   logout() {
     this.name = undefined;
     firebase.auth().signOut().then(
