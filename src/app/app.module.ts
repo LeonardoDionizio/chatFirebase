@@ -8,6 +8,11 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { PanelComponent } from './panel/panel.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 // Configurações de conexão do firebase
 export const firebaseConfig = {
@@ -20,7 +25,7 @@ export const firebaseConfig = {
 };
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PanelComponent, HeaderComponent, FooterComponent, LoginComponent, LoaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
