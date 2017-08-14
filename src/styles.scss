@@ -2,20 +2,187 @@
 
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
 @import url('https://fonts.googleapis.com/css?family=Frijole');
-body {
-    background-color: #999999;
-    padding-top: 1em;
+// VARIABLES
+//---colors
+$dark: #262626;
+$light: #fff;
+$primary: #0066cc;
+$secondary: #cccccc;
+//---colors-dark
+$dark-primary: #004080;
+$dark-secondary: #666666;
+//---colors-hover
+$dark-h: #0d0d0d;
+$primary-h: #0059b3;
+$secondary-h: #b3b3b3;
+// MIXINS
+//button
+@mixin btn-chat($value,
+$value-h,
+$value-s) {
+    background: $value;
+    color: $light;
+    display: inline-block;
+    padding: 5px 10px;
+    box-shadow: 0 4px $value-s;
+    cursor: pointer;
+    &:hover {
+        background: $value-h;
+    }
+    &:active,
+    &:focus {
+        background-color: $value-h;
+        box-shadow: 0 1px $value-s;
+        transform: translateY(4px);
+    }
 }
 
-* {
+// radius das bordas
+@mixin border-radius($radius) {
+    border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+}
+
+// scale
+@mixin scale($size-width,
+$size-height) {
+    -ms-transform: scale($size-width, $size-height); // IE 9
+    -webkit-transform: scale($size-width, $size-height); // Safari
+    transform: scale($size-width, $size-height);
+}
+
+// box-shadow
+@mixin box-shadow($top,
+$left,
+$blur,
+$color,
+$inset: false) {
+    @if $inset {
+        -webkit-box-shadow: inset $top $left $blur $color;
+        -moz-box-shadow: inset $top $left $blur $color;
+        box-shadow: inset $top $left $blur $color;
+    }
+    @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
+
+// CLASS
+//---- background color
+body {
+    background-color: #0088cc;
+}
+
+//---- margins
+.mg-b-20 {
+    margin-bottom: 20px;
+}
+
+.mg-b-50 {
+    margin-bottom: 50px;
+}
+
+.mg-t-20 {
+    margin-top: 20px;
+}
+
+.mg-t-50 {
+    margin-top: 50px;
+}
+
+//----padrão de fonte
+*,
+h3 {
+    font-weight: 300;
     font-family: 'Josefin Sans', sans-serif;
 }
 
-h1 {
-    font-family: 'Frijole', cursive;
-    color: #ccc2cc;
+//----- buttons
+.btn-chat-dark {
+    @include btn-chat($dark,
+    $dark-h,
+    $dark);
 }
 
-.mg-top-50 {
-    margin-top: 30px;
+.btn-chat-primary {
+    @include btn-chat($primary,
+    $primary-h,
+    $dark-primary);
+}
+
+.btn-chat-secondary {
+    @include btn-chat($secondary,
+    $secondary-h,
+    $dark-secondary);
+}
+
+// -----backgrounds
+.bg-chat-primary {
+    color: $light;
+    background: $primary;
+}
+
+.bg-chat-secondary {
+    color: $dark;
+    background: $secondary;
+}
+
+.jumbotron {
+    max-width: 800px;
+    min-height: 610px;
+    background: #f2f2f2;
+}
+
+.box-chat-secondary {
+    color: $dark;
+    background: #f1f3f3;
+}
+
+.box-chat-primary {
+    color: $dark;
+    background: #cce5ff;
+}
+
+.box-chat {
+    padding: 7px 12px;
+    margin-bottom: 15px;
+    @include box-shadow(0,
+    5px,
+    10px,
+    $secondary-h);
+    @include border-radius(4px);
+    p {
+        padding-left: 5px;
+    }
+}
+
+.input-chat-message {
+    padding-left: 20px;
+    border: 1px solid $secondary-h;
+    @include border-radius(20px);
+    &:focus,
+    &:active {
+        border-color: $dark-secondary;
+    }
+}
+
+.btn-send {
+    cursor: pointer;
+    color: $light;
+    padding: 12px 15px;
+    background: $primary;
+    margin-bottom: 5px;
+    @include border-radius(50px);
+    @include box-shadow(0,
+    5px,
+    10px,
+    $secondary-h);
+    &:hover,
+    &:focus,
+    &:active {
+        background: $primary-h
+    }
 }
