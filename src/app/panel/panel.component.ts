@@ -31,7 +31,8 @@ export class PanelComponent implements OnInit {
 
   // enviar as mensagens
   public chatSend(theirMessage: string) {
-    theirMessage.trim();
+    theirMessage = theirMessage.trim();
+    console.log(theirMessage);
     if (theirMessage !== '') {
       this.items.push({
         message: theirMessage,
