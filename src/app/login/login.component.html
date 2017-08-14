@@ -1,0 +1,15 @@
+<div class="container mg-b-20">
+  <div class="row" *ngIf="!name">
+    <div class="col d-flex justify-content-center">
+      <h3>Entrar</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col d-flex justify-content-center" *ngIf="!name">
+      <button class="btn btn-chat-primary" (click)="loginFacebook()"> <i class="fa fa-facebook" aria-hidden="true"></i> Facebook</button>
+    </div>
+    <div class="col d-flex justify-content-end" *ngIf="name">
+      <button class="btn btn-chat-primary" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</button>
+    </div>
+  </div>
+</div>

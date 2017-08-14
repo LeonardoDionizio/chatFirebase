@@ -1,0 +1,26 @@
+<app-login (logIn)="logIn($event)" *ngIf="!inPayload">
+</app-login>
+
+<div class="container d-flex justify-content-center" *ngIf="name">
+  <app-loader *ngIf="inPayload"></app-loader>
+  <div class="jumbotron" *ngIf="!inPayload">
+    <div class="container" >
+      <div class="row" *ngFor="let item of items | async">
+        <div class="box-chat col-10 col-sm-6" [ngClass]="verifyPerfil(item.name)">
+          <a href="#"><strong>{{item.name}}</strong></a>
+          <p>{{item.message}}</p>
+        </div>
+      </div>
+      <br>
+      <div class="row mg-top-50">
+        <div class="col-10 col-md-11">
+          <input type="text" class="form-control input-chat-message" placeholder="Digite sua mensagem" (keyup.enter)="chatSend($event.target.value)"
+            [(ngModel)]="msgVal" maxlength="40">
+        </div>
+        <div class="col-2 col-md-1">
+          <button class="btn-send" (click)="chatSend(msgVal)"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
