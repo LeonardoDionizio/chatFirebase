@@ -16,12 +16,7 @@ import { LoaderComponent } from './shared/loader/loader.component';
 
 // Configurações de conexão do firebase
 export const firebaseConfig = {
-  apiKey: 'AIzaSyBSPDqsWRkuGEK7Q7_fiMA7ZOSj8om2x3M',
-  authDomain: 'chatapp-c8f50.firebaseapp.com',
-  databaseURL: 'https://chatapp-c8f50.firebaseio.com',
-  projectId: 'chatapp-c8f50',
-  storageBucket: 'chatapp-c8f50.appspot.com',
-  messagingSenderId: '1037362870910'
+  //configurações da conexão adquirido no firebase
 };
 
 @NgModule({
